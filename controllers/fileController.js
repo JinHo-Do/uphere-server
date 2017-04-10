@@ -21,6 +21,7 @@ var uploadFile = function (req, res) {
 
       s3.upload(params, function (err, data) {
         if (err) {
+          console.log(err);
           return res.sendStatus(500);
         }
         // Successfully uploaded data to " + myBucket + "/" + keyName);
