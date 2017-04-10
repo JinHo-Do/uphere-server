@@ -4,6 +4,8 @@ var Message = require('../models/message');
 var Chat = require('../models/chat');
 var fs = require('fs');
 
+AWS.config.update({region: 'ap-northeast-2'});
+
 var s3 = new AWS.S3();
 var myBucket = 'uphere.uploads';
 
@@ -21,7 +23,7 @@ var uploadFile = function (req, res) {
 
       s3.upload(params, function (err, data) {
         if (err) {
-          console.log(err);
+          console.log('s3 upload failed::: ', err);
           return res.sendStatus(500);
         }
         // Successfully uploaded data to " + myBucket + "/" + keyName);
